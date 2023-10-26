@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class SignUpPage extends JFrame {
 
 	private JPanel contentPane;
@@ -143,10 +144,7 @@ public class SignUpPage extends JFrame {
 			public void actionPerformed(ActionEvent e){
 				connection();
 				
-				insertData();
-				
-				frameDispose();
-				
+				insertData();	
 			}
 		});
 		btnSignUp.setIcon(new ImageIcon(SignUpPage.class.getResource("/img/signup (1).png")));
@@ -159,9 +157,10 @@ public class SignUpPage extends JFrame {
 		contentPane.add(lblAmount);
 		
 		tfAmount = new JTextField();
-		tfAmount.setToolTipText("Enter amount you want to use for banking Note- Amount must be greater than 1500");
+		tfAmount.setToolTipText("Amount must be greater than 1500");
 		tfAmount.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		tfAmount.setBounds(93, 286, 146, 30);
+		tfAmount.setText("0");
 		contentPane.add(tfAmount);
 		tfAmount.setColumns(10);
 		
@@ -171,13 +170,7 @@ public class SignUpPage extends JFrame {
 		contentPane.add(png);
 	}
 
-	protected void frameDispose() {
-		LoginPage login = new LoginPage();
-		dispose();
-		login.setVisible(true);
-		
-	}
-
+	@SuppressWarnings("deprecation")
 	protected void insertData() {
 		String fName,mName,lName,address,userName,password;
 		long amount;
@@ -210,6 +203,11 @@ public class SignUpPage extends JFrame {
 			tfAdddress.requestFocus();
 			return;
 		}
+		if (amount < 1500) {
+			JOptionPane.showMessageDialog(contentPane, "Enter amount more than 1500");
+			tfLastName.requestFocus();
+			return;
+		}
 		if (userName.isEmpty()) {
 			JOptionPane.showMessageDialog(contentPane, "User Name Required");
 			tfUsername.requestFocus();
@@ -225,11 +223,8 @@ public class SignUpPage extends JFrame {
 			tfPassword.requestFocus();
 			return;
 		}
-		if (amount < 1500) {
-			JOptionPane.showMessageDialog(contentPane, "Enter amount more than 1500");
-			tfLastName.requestFocus();
-			return;
-		}
+		
+		
 		try {
 			pst = con.prepareStatement("insert into signup(first_Name,middle_Name,last_Name,address,username,password,balance) values(?,?,?,?,?,?,?)");
 			pst.setString(1, fName);
@@ -254,7 +249,9 @@ public class SignUpPage extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		LoginPage login = new LoginPage();
+		dispose();
+		login.setVisible(true);
 	}
 
 	protected void connection() {

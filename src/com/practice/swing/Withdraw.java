@@ -109,6 +109,7 @@ public class Withdraw extends JFrame {
 						
 						dispose();
 						
+						
 					} catch (SQLException e1) {
 						
 						e1.printStackTrace();

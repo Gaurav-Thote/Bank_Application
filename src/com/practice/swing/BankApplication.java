@@ -174,33 +174,7 @@ public class BankApplication extends JFrame {
 		lblDelAccount.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
-				String y="Are you sure you want to delete your account"; 
-				int yes = JOptionPane.showConfirmDialog(contentPane, y);
-			if (JOptionPane.YES_OPTION== yes) {
-					int id = LoginPage.id;
-					try {
-						try {
-							Class.forName("com.mysql.cj.jdbc.Driver");
-							con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account","root","");
-						} catch (ClassNotFoundException e1) {
-							
-							e1.printStackTrace();
-						}
-						
-						PreparedStatement pst;
-						
-						pst= con.prepareStatement("delete from signup where id=?");
-						pst.setInt(1, id);
-						pst.executeUpdate();
-						dispose();
-						LoginPage lp = new LoginPage();
-						lp.setVisible(true);
-					} catch (SQLException e1) {
-						
-						e1.printStackTrace();
-					}
-				
-				}
+				deleteAccount();
 			}
 		});
 		lblDelAccount.setForeground(new Color(255, 255, 255));
@@ -231,6 +205,37 @@ public class BankApplication extends JFrame {
 		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.png")));
 		png.setBounds(0, 11, 887, 512);
 		contentPane.add(png);
+	}
+
+	protected void deleteAccount() {
+		String y="Are you sure you want to delete your account"; 
+		int yes = JOptionPane.showConfirmDialog(contentPane, y);
+	if (JOptionPane.YES_OPTION== yes) {
+			int id = LoginPage.id;
+			try {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account","root","");
+				} catch (ClassNotFoundException e1) {
+					
+					e1.printStackTrace();
+				}
+				
+				PreparedStatement pst;
+				
+				pst= con.prepareStatement("delete from signup where id=?");
+				pst.setInt(1, id);
+				pst.executeUpdate();
+				dispose();
+				LoginPage lp = new LoginPage();
+				lp.setVisible(true);
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+		
+		}
+		
 	}
 
 	private int bal() {

@@ -180,6 +180,7 @@ public class LoginPage extends JFrame {
 		lblSignUp.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblSignUp.setBounds(363, 429, 68, 31);
 		contentPane.add(lblSignUp);
+		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(LoginPage.class.getResource("/img/square1.png")));
 		png.setBounds(0, 0, 601, 568);
