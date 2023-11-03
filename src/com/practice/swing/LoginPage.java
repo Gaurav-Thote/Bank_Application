@@ -34,7 +34,7 @@ public class LoginPage extends JFrame {
 	Connection con;
 	PreparedStatement pst;
 	ResultSet rs;
-	static String u, p, fName, mName, lName, add;
+	static String u, p, fName, mName, lName, add, mobNumber;
 	static int bal, id;
 
 	/**
@@ -130,9 +130,10 @@ public class LoginPage extends JFrame {
 						u = rs.getString(6);
 						p = rs.getString(7);
 						id = rs.getInt(1);
+						mobNumber = rs.getString(9);
 						
 						if (userName.equals(u) && password.equals(p)) {	
-//							JOptionPane.showMessageDialog(contentPane, "Login Successfully");
+//							JOptionPane.showMessageDialog(contentPane, mobileNumber);
 							BankApplication bankApplication =  new BankApplication();
 							dispose();
 							bankApplication.setVisible(true);

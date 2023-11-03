@@ -41,6 +41,7 @@ public class BankApplication extends JFrame {
 	private JLabel lblWithdraw;
 	static int bals;
 	JButton btnRefresh;
+	private JLabel lblLogout;
 	
 
 
@@ -79,15 +80,15 @@ public class BankApplication extends JFrame {
 		JLabel lblUser = new JLabel("");
 		lblUser.setForeground(new Color(255, 255, 255));
 		lblUser.setFont(new Font("Algerian", Font.PLAIN, 18));
-		lblUser.setBounds(752, 21, 151, 37);
+		lblUser.setBounds(97, 26, 406, 37);
 		contentPane.add(lblUser);
-		lblUser.setText(LoginPage.fName);
+		lblUser.setText(LoginPage.fName+" "+LoginPage.lName);
 		
 	
 		JLabel lblWelcome = new JLabel("welcome");
 		lblWelcome.setForeground(new Color(255, 255, 255));
 		lblWelcome.setFont(new Font("Algerian", Font.PLAIN, 18));
-		lblWelcome.setBounds(665, 21, 98, 37);
+		lblWelcome.setBounds(10, 26, 98, 37);
 		contentPane.add(lblWelcome);
 		
 		JLabel lblAvailableBalance = new JLabel("Available Balance\r\n");
@@ -118,7 +119,7 @@ public class BankApplication extends JFrame {
 		lblYourDetails = new JLabel("Your Details");
 		lblYourDetails.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				Your_Detail details = new Your_Detail();
+				YourDetails details = new YourDetails();
 				details.setVisible(true);
 			}
 		});
@@ -200,6 +201,13 @@ public class BankApplication extends JFrame {
 		btnRefresh.setContentAreaFilled(false);
 		btnRefresh.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 		contentPane.add(btnRefresh);
+		
+		lblLogout = new JLabel("Logout");
+		lblLogout.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLogout.setForeground(Color.WHITE);
+		lblLogout.setFont(new Font("Algerian", Font.PLAIN, 18));
+		lblLogout.setBounds(783, 26, 86, 37);
+		contentPane.add(lblLogout);
 		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.png")));

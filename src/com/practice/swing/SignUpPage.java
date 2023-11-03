@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class SignUpPage extends JFrame {
@@ -32,6 +33,10 @@ public class SignUpPage extends JFrame {
 	private JButton btnSignUp;
 	Connection con;
 	PreparedStatement pst;
+	private JTextField tfMobileNumber;
+	private JTextField tfOTP;
+	private JLabel lblOTP;
+	long otp;
 	/**
 	 * Launch the application.
 	 */
@@ -105,12 +110,12 @@ public class SignUpPage extends JFrame {
 		
 		JLabel lblAddress = new JLabel("Address");
 		lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAddress.setBounds(94, 231, 80, 25);
+		lblAddress.setBounds(93, 194, 80, 25);
 		contentPane.add(lblAddress);
 		
 		tfAdddress = new JTextField();
 		tfAdddress.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		tfAdddress.setBounds(93, 253, 428, 30);
+		tfAdddress.setBounds(93, 218, 428, 30);
 		contentPane.add(tfAdddress);
 		tfAdddress.setColumns(10);
 		
@@ -128,12 +133,12 @@ public class SignUpPage extends JFrame {
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPassword.setBounds(343, 329, 100, 23);
+		lblPassword.setBounds(319, 329, 100, 23);
 		contentPane.add(lblPassword);
 		
 		tfPassword = new JPasswordField();
 		tfPassword.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		tfPassword.setBounds(343, 351, 178, 30);
+		tfPassword.setBounds(319, 351, 202, 30);
 		contentPane.add(tfPassword);
 		
 		btnSignUp = new JButton("");
@@ -148,16 +153,55 @@ public class SignUpPage extends JFrame {
 		btnSignUp.setBounds(242, 404, 116, 41);
 		contentPane.add(btnSignUp);
 		
+		tfMobileNumber = new JTextField();
+		tfMobileNumber.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		tfMobileNumber.setColumns(10);
+		tfMobileNumber.setBounds(93, 281, 178, 30);
+		contentPane.add(tfMobileNumber);
+		
+		JLabel lblMobilNumber = new JLabel("Mobile Number");
+		lblMobilNumber.setToolTipText("");
+		lblMobilNumber.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblMobilNumber.setBounds(93, 259, 154, 25);
+		contentPane.add(lblMobilNumber);
+		
+		tfOTP = new JTextField();
+		tfOTP.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		tfOTP.setColumns(10);
+		tfOTP.setBounds(319, 288, 88, 30);
+		contentPane.add(tfOTP);
+		
+		lblOTP = new JLabel("OTP\r\n");
+		lblOTP.setToolTipText("");
+		lblOTP.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblOTP.setBounds(319, 259, 71, 25);
+		contentPane.add(lblOTP);
+		
+		JButton btnOTP = new JButton("Send \r\nOTP");
+		btnOTP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				otp = (int)Math.ceil(Math.random() * 5000);
+				if (otp < 1000) {
+					otp = 2000 + otp;
+				}
+				JOptionPane.showMessageDialog(btnOTP, "Your OTP is "+otp);
+			}
+		});
+		btnOTP.setHorizontalAlignment(SwingConstants.LEFT);
+		btnOTP.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnOTP.setBounds(417, 288, 104, 30);
+		contentPane.add(btnOTP);
+		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(SignUpPage.class.getResource("/img/square1.png")));
 		png.setBounds(0, 0, 602, 592);
 		contentPane.add(png);
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation"})
 	protected void insertData() {
-		String fName,mName,lName,address,userName,password;
-		long amount;
+		String fName,mName,lName,address,userName,password, mobileNumber, otps;
+		long amount, otpCheck;
 		// Getting Data from TextField
 		fName = tfFirstName.getText().toString().trim();
 		mName = tfMiddleName.getText().toString().trim();
@@ -166,6 +210,9 @@ public class SignUpPage extends JFrame {
 		userName = tfUsername.getText().toString().trim();
 		password = tfPassword.getText().toString().trim();
 		amount = (int)Math.ceil(Math.random() * 5000);
+		mobileNumber = tfMobileNumber.getText().toString().trim();
+		otps = tfOTP.getText().toString().trim();
+		
 		//Validations
 		if (fName.isEmpty()) {
 			JOptionPane.showMessageDialog(contentPane, "First Name Required");
@@ -205,36 +252,58 @@ public class SignUpPage extends JFrame {
 			tfPassword.requestFocus();
 			return;
 		}
-		
-		
-		try {
-			pst = con.prepareStatement("insert into signup(first_Name,middle_Name,last_Name,address,username,password,balance) values(?,?,?,?,?,?,?)");
-			pst.setString(1, fName);
-			pst.setString(2, mName);
-			pst.setString(3, lName);
-			pst.setString(4, address);
-			pst.setString(5, userName);
-			pst.setString(6, password);
-			pst.setLong(7, amount);
-			pst.execute();
-			
-//			JOptionPane.showMessageDialog(contentPane, "User Registered Successfully");
-			
-			/*
-			 * tfFirstName.setText(""); tfMiddleName.setText(""); tfLastName.setText("");
-			 * tfAdddress.setText(""); tfUsername.setText(""); tfPassword.setText("");
-			 */
-			
-			con.close();
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (mobileNumber.isEmpty()) {
+			JOptionPane.showMessageDialog(contentPane, "Mobile Number Required");
+			tfMobileNumber.requestFocus();
+			return;
 		}
-		LoginPage login = new LoginPage();
-		dispose();
-		login.setVisible(true);
+		if (otps.isEmpty()) {
+			JOptionPane.showMessageDialog(contentPane, "Generate And Enter OTP");
+			tfOTP.requestFocus();
+			return;
+		}
+		if (mobileNumber.length() != 10) {
+			JOptionPane.showMessageDialog(contentPane, "Mobile Number Must be of 10 digits");
+			tfMobileNumber.requestFocus();
+			return;
+		}
+		otpCheck = Long.parseLong(otps);
+		if(otp == otpCheck) {
+			try {
+				pst = con.prepareStatement("insert into signup(first_Name,middle_Name,last_Name,address,username,password,balance,mobile) values(?,?,?,?,?,?,?,?)");
+				pst.setString(1, fName);
+				pst.setString(2, mName);
+				pst.setString(3, lName);
+				pst.setString(4, address);
+				pst.setString(5, userName);
+				pst.setString(6, password);
+				pst.setLong(7, amount);
+				pst.setString(8, mobileNumber);
+				pst.execute();
+				
+//				JOptionPane.showMessageDialog(contentPane, "User Registered Successfully");
+				
+				/*
+				 * tfFirstName.setText(""); tfMiddleName.setText(""); tfLastName.setText("");
+				 * tfAdddress.setText(""); tfUsername.setText(""); tfPassword.setText("");
+				 */
+				
+				con.close();
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			LoginPage login = new LoginPage();
+			dispose();
+			login.setVisible(true);
+		}
+		else {
+			JOptionPane.showMessageDialog(contentPane, "Incorrect OTP");
+		}
 	}
+		
+		
 
 	protected void connection() {
 		

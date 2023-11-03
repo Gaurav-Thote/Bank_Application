@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class MainPage extends JFrame {
@@ -47,6 +48,8 @@ public class MainPage extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblLogin = new JLabel("LogIn");
+		lblLogin.setVerticalAlignment(SwingConstants.TOP);
+		lblLogin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -55,8 +58,8 @@ public class MainPage extends JFrame {
 				lp.setVisible(true);			}
 		});
 		lblLogin.setForeground(Color.WHITE);
-		lblLogin.setFont(new Font("Algerian", Font.PLAIN, 18));
-		lblLogin.setBounds(771, 11, 98, 37);
+		lblLogin.setFont(new Font("Algerian", Font.PLAIN, 22));
+		lblLogin.setBounds(747, 11, 122, 59);
 		getContentPane().add(lblLogin);
 		
 		JLabel png = new JLabel("");
