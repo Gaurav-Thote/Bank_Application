@@ -64,7 +64,7 @@ public class BankApplication extends JFrame {
 	 * Create the frame.
 	 */
 	public BankApplication() {
-		setTitle("Bank Application");
+		setTitle("Customer Bank Application");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 895, 545);
 		contentPane = new JPanel();
@@ -170,7 +170,7 @@ public class BankApplication extends JFrame {
 		lblWithdraw.setBounds(621, 332, 103, 27);
 		contentPane.add(lblWithdraw);
 		
-		lblDelAccount = new JLabel("Delete Account");
+		lblDelAccount = new JLabel("Remove Account");
 		lblDelAccount.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
@@ -278,6 +278,11 @@ protected void connection() {
 		
 		
 	}	
+protected void refresh() {
+	dispose();
+	BankApplication ba = new BankApplication();
+	ba.setVisible(true);
+}
 }
 
 

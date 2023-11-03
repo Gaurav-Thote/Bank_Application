@@ -54,7 +54,7 @@ public class Deposit extends JFrame {
 	 * Create the frame.
 	 */
 	public Deposit() {
-		setTitle("Bank Application");
+		setTitle("Customer Bank Application");
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 415, 426);
 		contentPane = new JPanel();
@@ -112,7 +112,8 @@ public class Deposit extends JFrame {
 						e1.printStackTrace();
 					}
 					dispose();
-					
+//					BankApplication ba = new BankApplication(); 
+//					ba.refresh();
 				}
 			
 				

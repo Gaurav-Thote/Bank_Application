@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class Your_Detail extends JFrame {
 
 	private JPanel contentPane;
@@ -47,6 +48,7 @@ public class Your_Detail extends JFrame {
 	 */
 	public Your_Detail() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Customer Bank Application");
 		setBounds(100, 100, 611, 601);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

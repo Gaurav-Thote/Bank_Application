@@ -54,7 +54,7 @@ public class Update_Detail extends JFrame {
 	 * Create the frame.
 	 */
 	public Update_Detail() {
-		setTitle("Bank Application\r\n");
+		setTitle("Customer Bank Application");
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 611, 601);
 		contentPane = new JPanel();

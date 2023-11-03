@@ -57,7 +57,7 @@ public class LoginPage extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginPage() {
-		setTitle("Bank Application");
+		setTitle("Customer Bank Application");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 200, 618, 607);
 		contentPane = new JPanel();

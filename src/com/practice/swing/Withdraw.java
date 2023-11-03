@@ -53,7 +53,7 @@ public class Withdraw extends JFrame {
 	 * Create the frame.
 	 */
 	public Withdraw() {
-		setTitle("Bank Application");
+		setTitle("Customer Bank Application");
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 415, 426);
 		contentPane = new JPanel();

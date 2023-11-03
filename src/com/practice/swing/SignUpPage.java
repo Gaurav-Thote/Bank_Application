@@ -32,9 +32,6 @@ public class SignUpPage extends JFrame {
 	private JButton btnSignUp;
 	Connection con;
 	PreparedStatement pst;
-
-
-	private JTextField tfAmount;
 	/**
 	 * Launch the application.
 	 */
@@ -55,7 +52,7 @@ public class SignUpPage extends JFrame {
 	 * Create the frame.
 	 */
 	public SignUpPage() {
-		setTitle("Bank Application");
+		setTitle("Customer Bank Application");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 200, 618, 597);
 		contentPane = new JPanel();
@@ -108,12 +105,12 @@ public class SignUpPage extends JFrame {
 		
 		JLabel lblAddress = new JLabel("Address");
 		lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAddress.setBounds(93, 194, 80, 25);
+		lblAddress.setBounds(94, 231, 80, 25);
 		contentPane.add(lblAddress);
 		
 		tfAdddress = new JTextField();
 		tfAdddress.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		tfAdddress.setBounds(93, 218, 428, 30);
+		tfAdddress.setBounds(93, 253, 428, 30);
 		contentPane.add(tfAdddress);
 		tfAdddress.setColumns(10);
 		
@@ -151,19 +148,6 @@ public class SignUpPage extends JFrame {
 		btnSignUp.setBounds(242, 404, 116, 41);
 		contentPane.add(btnSignUp);
 		
-		JLabel lblAmount = new JLabel("Amount");
-		lblAmount.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblAmount.setBounds(93, 263, 82, 25);
-		contentPane.add(lblAmount);
-		
-		tfAmount = new JTextField();
-		tfAmount.setToolTipText("Amount must be greater than 1500");
-		tfAmount.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		tfAmount.setBounds(93, 286, 146, 30);
-		tfAmount.setText("0");
-		contentPane.add(tfAmount);
-		tfAmount.setColumns(10);
-		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(SignUpPage.class.getResource("/img/square1.png")));
 		png.setBounds(0, 0, 602, 592);
@@ -181,7 +165,7 @@ public class SignUpPage extends JFrame {
 		address = tfAdddress.getText().toString().trim();
 		userName = tfUsername.getText().toString().trim();
 		password = tfPassword.getText().toString().trim();
-		amount = Long.parseLong(tfAmount.getText().toString().trim());
+		amount = (int)Math.ceil(Math.random() * 5000);
 		//Validations
 		if (fName.isEmpty()) {
 			JOptionPane.showMessageDialog(contentPane, "First Name Required");
@@ -204,9 +188,7 @@ public class SignUpPage extends JFrame {
 			return;
 		}
 		if (amount < 1500) {
-			JOptionPane.showMessageDialog(contentPane, "Enter amount more than 1500");
-			tfLastName.requestFocus();
-			return;
+			amount = 2000 + amount;
 		}
 		if (userName.isEmpty()) {
 			JOptionPane.showMessageDialog(contentPane, "User Name Required");
