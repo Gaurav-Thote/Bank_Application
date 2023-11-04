@@ -79,15 +79,15 @@ public class BankApplication extends JFrame {
 		
 		JLabel lblUser = new JLabel("");
 		lblUser.setForeground(new Color(255, 255, 255));
-		lblUser.setFont(new Font("Algerian", Font.PLAIN, 18));
+		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblUser.setBounds(97, 26, 406, 37);
 		contentPane.add(lblUser);
 		lblUser.setText(LoginPage.fName+" "+LoginPage.lName);
 		
 	
-		JLabel lblWelcome = new JLabel("welcome");
+		JLabel lblWelcome = new JLabel("Welcome");
 		lblWelcome.setForeground(new Color(255, 255, 255));
-		lblWelcome.setFont(new Font("Algerian", Font.PLAIN, 18));
+		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblWelcome.setBounds(10, 26, 98, 37);
 		contentPane.add(lblWelcome);
 		
@@ -202,7 +202,7 @@ public class BankApplication extends JFrame {
 		btnRefresh.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 		contentPane.add(btnRefresh);
 		
-		lblLogout = new JLabel("Logout");
+		lblLogout = new JLabel("LOGOUT");
 		lblLogout.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
@@ -213,7 +213,7 @@ public class BankApplication extends JFrame {
 		});
 		lblLogout.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLogout.setForeground(Color.WHITE);
-		lblLogout.setFont(new Font("Algerian", Font.PLAIN, 18));
+		lblLogout.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblLogout.setBounds(783, 26, 86, 37);
 		contentPane.add(lblLogout);
 		
