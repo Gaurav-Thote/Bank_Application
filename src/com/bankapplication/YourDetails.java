@@ -1,4 +1,4 @@
-package com.practice.swing;
+package com.bankapplication;
 
 import java.awt.EventQueue;
 import java.awt.Font;
