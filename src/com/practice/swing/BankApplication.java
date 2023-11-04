@@ -203,6 +203,14 @@ public class BankApplication extends JFrame {
 		contentPane.add(btnRefresh);
 		
 		lblLogout = new JLabel("Logout");
+		lblLogout.addMouseListener(new MouseAdapter() {
+			
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				MainPage mp = new MainPage();
+				mp.setVisible(true);
+			}
+		});
 		lblLogout.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLogout.setForeground(Color.WHITE);
 		lblLogout.setFont(new Font("Algerian", Font.PLAIN, 18));
@@ -216,7 +224,7 @@ public class BankApplication extends JFrame {
 	}
 
 	protected void deleteAccount() {
-		String y="Are you sure you want to delete your account"; 
+		String y="Are you sure you want to remove your account"; 
 		int yes = JOptionPane.showConfirmDialog(contentPane, y);
 	if (JOptionPane.YES_OPTION== yes) {
 			int id = LoginPage.id;
@@ -235,8 +243,8 @@ public class BankApplication extends JFrame {
 				pst.setInt(1, id);
 				pst.executeUpdate();
 				dispose();
-				LoginPage lp = new LoginPage();
-				lp.setVisible(true);
+				MainPage mp = new MainPage();
+				mp.setVisible(true);
 			} catch (SQLException e1) {
 				
 				e1.printStackTrace();

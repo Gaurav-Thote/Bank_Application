@@ -181,6 +181,18 @@ public class SignUpPage extends JFrame {
 		btnOTP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				otp = (int)Math.ceil(Math.random() * 5000);
+				String mobileNumber;
+				mobileNumber = tfMobileNumber.getText().toString().trim();
+				if (mobileNumber.isEmpty()) {
+					JOptionPane.showMessageDialog(contentPane, "Mobile Number Required");
+					tfMobileNumber.requestFocus();
+					return;
+				}
+				if (mobileNumber.length() != 10) {
+					JOptionPane.showMessageDialog(contentPane, "Mobile Number Must be of 10 digits");
+					tfMobileNumber.requestFocus();
+					return;
+				}
 				if (otp < 1000) {
 					otp = 2000 + otp;
 				}

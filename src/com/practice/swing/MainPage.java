@@ -59,7 +59,7 @@ public class MainPage extends JFrame {
 		});
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Algerian", Font.PLAIN, 22));
-		lblLogin.setBounds(747, 11, 122, 59);
+		lblLogin.setBounds(762, 21, 95, 39);
 		getContentPane().add(lblLogin);
 		
 		JLabel png = new JLabel("");
