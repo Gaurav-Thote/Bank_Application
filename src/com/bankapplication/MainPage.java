@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -57,6 +59,7 @@ public class MainPage extends JFrame {
 				LoginPage lp = new LoginPage();
 				lp.setVisible(true);			}
 		});
+		lblLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Algerian", Font.PLAIN, 22));
 		lblLogin.setBounds(762, 21, 95, 39);

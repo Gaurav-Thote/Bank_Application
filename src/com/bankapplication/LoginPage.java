@@ -142,7 +142,7 @@ public class LoginPage extends JFrame {
 						}
 						
 					}
-					if (!userName.equals(u)) {
+					if (!userName.equals(u) || password.equals(p)) {
 						JOptionPane.showMessageDialog(contentPane, "UserName or Password is incorrect");						
 					}
 				}catch(Exception ae) {

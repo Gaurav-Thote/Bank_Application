@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -79,7 +80,7 @@ public class BankApplication extends JFrame {
 		
 		JLabel lblUser = new JLabel("");
 		lblUser.setForeground(new Color(255, 255, 255));
-		lblUser.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblUser.setFont(new Font("Algerian", Font.PLAIN, 18));
 		lblUser.setBounds(97, 26, 406, 37);
 		contentPane.add(lblUser);
 		lblUser.setText(LoginPage.fName+" "+LoginPage.lName);
@@ -87,7 +88,7 @@ public class BankApplication extends JFrame {
 	
 		JLabel lblWelcome = new JLabel("Welcome");
 		lblWelcome.setForeground(new Color(255, 255, 255));
-		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblWelcome.setFont(new Font("Algerian", Font.PLAIN, 18));
 		lblWelcome.setBounds(10, 26, 98, 37);
 		contentPane.add(lblWelcome);
 		
@@ -211,9 +212,10 @@ public class BankApplication extends JFrame {
 				mp.setVisible(true);
 			}
 		});
+		lblLogout.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblLogout.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLogout.setForeground(Color.WHITE);
-		lblLogout.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblLogout.setFont(new Font("Algerian", Font.PLAIN, 18));
 		lblLogout.setBounds(783, 26, 86, 37);
 		contentPane.add(lblLogout);
 		
