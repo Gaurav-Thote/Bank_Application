@@ -34,8 +34,8 @@ public class LoginPage extends JFrame {
 	Connection con;
 	PreparedStatement pst;
 	ResultSet rs;
-	static String u, p, fName, mName, lName, add, mobNumber;
-	static int bal, id;
+	static String u, p, fName, mName, lName, add, mobNumber, j;
+	static int bal, id, k;
 
 	/**
 	 * Launch the application.
@@ -77,6 +77,7 @@ public class LoginPage extends JFrame {
 		contentPane.add(lblUsername);
 		
 		tfUserName = new JTextField();
+		tfUserName.setText("gaurav");
 		tfUserName.setBounds(172, 198, 273, 45);
 		tfUserName.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		contentPane.add(tfUserName);
@@ -88,9 +89,11 @@ public class LoginPage extends JFrame {
 		contentPane.add(lblPassword);
 		
 		tfPassword = new JPasswordField();
+		tfPassword.setEchoChar('*');
 		tfPassword.setBounds(172, 287, 273, 45);
 		tfPassword.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		contentPane.add(tfPassword);
+		tfPassword.setText("12345678");
 		
 		btnLogin = new JButton("");
 		btnLogin.setBackground(new Color(64, 0, 64));
@@ -129,7 +132,9 @@ public class LoginPage extends JFrame {
 						bal = rs.getInt(8);
 						u = rs.getString(6);
 						p = rs.getString(7);
+						j = rs.getString(10);
 						id = rs.getInt(1);
+						k = rs.getInt(11);
 						mobNumber = rs.getString(9);
 						
 						if (userName.equals(u) && password.equals(p)) {	
@@ -142,7 +147,7 @@ public class LoginPage extends JFrame {
 						}
 						
 					}
-					if (!userName.equals(u) || password.equals(p)) {
+					if (!userName.equals(u) || !password.equals(p)) {
 						JOptionPane.showMessageDialog(contentPane, "UserName or Password is incorrect");						
 					}
 				}catch(Exception ae) {

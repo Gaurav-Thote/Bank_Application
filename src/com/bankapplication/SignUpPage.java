@@ -212,7 +212,7 @@ public class SignUpPage extends JFrame {
 
 	@SuppressWarnings({ "deprecation"})
 	protected void insertData() {
-		String fName,mName,lName,address,userName,password, mobileNumber, otps;
+		String fName, mName, lName, address, userName, password, mobileNumber, otps, upi;
 		long amount, otpCheck;
 		// Getting Data from TextField
 		fName = tfFirstName.getText().toString().trim();
@@ -224,6 +224,7 @@ public class SignUpPage extends JFrame {
 		amount = (int)Math.ceil(Math.random() * 5000);
 		mobileNumber = tfMobileNumber.getText().toString().trim();
 		otps = tfOTP.getText().toString().trim();
+		upi = "none";
 		
 		//Validations
 		if (fName.isEmpty()) {
@@ -282,7 +283,7 @@ public class SignUpPage extends JFrame {
 		otpCheck = Long.parseLong(otps);
 		if(otp == otpCheck) {
 			try {
-				pst = con.prepareStatement("insert into signup(first_Name,middle_Name,last_Name,address,username,password,balance,mobile) values(?,?,?,?,?,?,?,?)");
+				pst = con.prepareStatement("insert into signup(first_Name,middle_Name,last_Name,address,username,password,balance,mobile,upi_username) values(?,?,?,?,?,?,?,?,?)");
 				pst.setString(1, fName);
 				pst.setString(2, mName);
 				pst.setString(3, lName);
@@ -291,6 +292,7 @@ public class SignUpPage extends JFrame {
 				pst.setString(6, password);
 				pst.setLong(7, amount);
 				pst.setString(8, mobileNumber);
+				pst.setString(9, upi);
 				pst.execute();
 				
 //				JOptionPane.showMessageDialog(contentPane, "User Registered Successfully");

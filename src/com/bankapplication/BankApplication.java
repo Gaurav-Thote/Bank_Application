@@ -43,6 +43,7 @@ public class BankApplication extends JFrame {
 	static int bals;
 	JButton btnRefresh;
 	private JLabel lblLogout;
+	private JLabel lblUPI;
 	
 
 
@@ -68,7 +69,7 @@ public class BankApplication extends JFrame {
 	public BankApplication() {
 		setTitle("Customer Bank Application");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 895, 545);
+		setBounds(0, 0, 889, 545);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
@@ -155,7 +156,7 @@ public class BankApplication extends JFrame {
 		});
 		lblDeposit.setForeground(new Color(255, 255, 255));
 		lblDeposit.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblDeposit.setBounds(205, 332, 103, 27);
+		lblDeposit.setBounds(205, 305, 103, 27);
 		contentPane.add(lblDeposit);
 		
 		lblWithdraw = new JLabel("Withdraw");
@@ -169,7 +170,7 @@ public class BankApplication extends JFrame {
 		});
 		lblWithdraw.setForeground(new Color(255, 255, 255));
 		lblWithdraw.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblWithdraw.setBounds(621, 332, 103, 27);
+		lblWithdraw.setBounds(621, 305, 103, 27);
 		contentPane.add(lblWithdraw);
 		
 		lblDelAccount = new JLabel("Remove Account");
@@ -182,7 +183,7 @@ public class BankApplication extends JFrame {
 		lblDelAccount.setForeground(new Color(255, 255, 255));
 		lblDelAccount.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDelAccount.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblDelAccount.setBounds(360, 433, 206, 27);
+		lblDelAccount.setBounds(357, 451, 206, 27);
 		contentPane.add(lblDelAccount);
 		
 		btnRefresh = new JButton("");
@@ -219,10 +220,31 @@ public class BankApplication extends JFrame {
 		lblLogout.setBounds(783, 26, 86, 37);
 		contentPane.add(lblLogout);
 		
-		JLabel png = new JLabel("");
+		JLabel lblInternetBanking = new JLabel("Internet Banking");
+		lblInternetBanking.setForeground(new Color(255, 255, 255));
+		lblInternetBanking.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblInternetBanking.setBounds(205, 382, 148, 27);
+		contentPane.add(lblInternetBanking);
+		
+		lblUPI = new JLabel("UPI");
+		lblUPI.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				UPI_Id ui = new UPI_Id();
+				ui.setVisible(true);
+			}
+		});
+		lblUPI.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblUPI.setForeground(Color.WHITE);
+		lblUPI.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblUPI.setBounds(518, 382, 206, 27);
+		contentPane.add(lblUPI);
+		
+		JLabel png = new JLabel("Internet Banklnig");
 		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.png")));
 		png.setBounds(0, 11, 887, 512);
 		contentPane.add(png);
+
 	}
 
 	protected void deleteAccount() {
