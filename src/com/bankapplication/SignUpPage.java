@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class SignUpPage extends JFrame {
@@ -150,7 +151,7 @@ public class SignUpPage extends JFrame {
 			}
 		});
 		btnSignUp.setIcon(new ImageIcon(SignUpPage.class.getResource("/img/signup (1).png")));
-		btnSignUp.setBounds(242, 404, 116, 41);
+		btnSignUp.setBounds(155, 411, 116, 48);
 		contentPane.add(btnSignUp);
 		
 		tfMobileNumber = new JTextField();
@@ -178,6 +179,7 @@ public class SignUpPage extends JFrame {
 		contentPane.add(lblOTP);
 		
 		JButton btnOTP = new JButton("Send \r\nOTP");
+		btnOTP.setBackground(new Color(192, 192, 192));
 		btnOTP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				otp = (int)Math.ceil(Math.random() * 5000);
@@ -203,6 +205,19 @@ public class SignUpPage extends JFrame {
 		btnOTP.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnOTP.setBounds(417, 288, 104, 30);
 		contentPane.add(btnOTP);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				LoginPage login = new LoginPage();
+				login.setVisible(true);
+				
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(Update_Detail.class.getResource("/img/cancel.png")));
+		btnNewButton.setBounds(349, 411, 109, 48);
+		contentPane.add(btnNewButton);
 		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(SignUpPage.class.getResource("/img/square1.png")));

@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 @SuppressWarnings("serial")
 public class Update_Detail extends JFrame {
@@ -198,6 +199,7 @@ public class Update_Detail extends JFrame {
 		contentPane.add(tfOTP);
 		
 		JButton btnOTP = new JButton("Send \r\nOTP");
+		btnOTP.setBackground(new Color(192, 192, 192));
 		btnOTP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				otp = (int)Math.ceil(Math.random() * 5000);

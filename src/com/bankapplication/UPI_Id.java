@@ -23,9 +23,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class UPI_Id extends JFrame {
 
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField tfUpiId;
 	private JTextField tfUpiAmount;

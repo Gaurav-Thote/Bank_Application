@@ -46,7 +46,7 @@ public class YourDetails extends JFrame {
 	 * Create the frame.
 	 */
 	public YourDetails() {
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Customer Bank Application");
 		setBounds(100, 100, 611, 601);
 		contentPane = new JPanel();
@@ -104,31 +104,31 @@ public class YourDetails extends JFrame {
 		lblShowName.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblShowName.setBounds(169, 128, 395, 41);
 		contentPane.add(lblShowName);
-		lblShowName.setText(fName()+" "+mName()+" "+lName());
+//		lblShowName.setText(fName()+" "+mName()+" "+lName());
 		
 		JLabel lblShowAddress = new JLabel("");
 		lblShowAddress.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblShowAddress.setBounds(186, 180, 362, 41);
 		contentPane.add(lblShowAddress);
-		lblShowAddress.setText(add());
+//		lblShowAddress.setText(add());
 		
 		JLabel lblShowBal = new JLabel("");
 		lblShowBal.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblShowBal.setBounds(228, 284, 336, 41);
 		contentPane.add(lblShowBal);
-		lblShowBal.setText(""+bal());
+//		lblShowBal.setText(""+bal());
 		
 		JLabel lblShowUsername = new JLabel("");
 		lblShowUsername.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblShowUsername.setBounds(201, 336, 362, 41);
 		contentPane.add(lblShowUsername);
-		lblShowUsername.setText(""+uName());
+//		lblShowUsername.setText(""+uName());
 		
 		JLabel lblShowMobileNumber = new JLabel("");
 		lblShowMobileNumber.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblShowMobileNumber.setBounds(244, 232, 330, 41);
 		contentPane.add(lblShowMobileNumber);
-		lblShowMobileNumber.setText(""+mobileNumber());
+//		lblShowMobileNumber.setText(""+mobileNumber());
 		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(YourDetails.class.getResource("/img/square1.png")));

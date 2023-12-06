@@ -221,6 +221,13 @@ public class BankApplication extends JFrame {
 		contentPane.add(lblLogout);
 		
 		JLabel lblInternetBanking = new JLabel("Internet Banking");
+		lblInternetBanking.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				InternetBanking ib = new InternetBanking();
+				ib.setVisible(true);
+			}
+		});
 		lblInternetBanking.setForeground(new Color(255, 255, 255));
 		lblInternetBanking.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblInternetBanking.setBounds(205, 382, 148, 27);
