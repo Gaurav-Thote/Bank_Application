@@ -36,6 +36,7 @@ public class Update_Detail extends JFrame {
 	private JTextField tfUpMobileNumber;
 	private JTextField tfOTP;
 	int otp;
+	JButton btnOTP;
 	 
 
 	/**
@@ -198,27 +199,11 @@ public class Update_Detail extends JFrame {
 		tfOTP.setBounds(309, 275, 88, 30);
 		contentPane.add(tfOTP);
 		
-		JButton btnOTP = new JButton("Send \r\nOTP");
+		btnOTP = new JButton("Send \r\nOTP");
 		btnOTP.setBackground(new Color(192, 192, 192));
 		btnOTP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				otp = (int)Math.ceil(Math.random() * 5000);
-				String mobileNumber;
-				mobileNumber = tfUpMobileNumber.getText().toString().trim();
-				if (mobileNumber.isEmpty()) {
-					JOptionPane.showMessageDialog(contentPane, "Mobile Number Required");
-					tfUpMobileNumber.requestFocus();
-					return;
-				}
-				if (mobileNumber.length() != 10) {
-					JOptionPane.showMessageDialog(contentPane, "Mobile Number Must be of 10 digits");
-					tfUpMobileNumber.requestFocus();
-					return;
-				}
-				if (otp < 1000) {
-					otp = 2000 + otp;
-				}
-				JOptionPane.showMessageDialog(btnOTP, "Your OTP is "+otp);
+				otp();
 			}
 		});
 		btnOTP.setHorizontalAlignment(SwingConstants.LEFT);
@@ -230,6 +215,26 @@ public class Update_Detail extends JFrame {
 		png.setIcon(new ImageIcon(Update_Detail.class.getResource("/img/square1.png")));
 		png.setBounds(-3, 0, 598, 562);
 		contentPane.add(png);
+	}
+
+	protected void otp() {
+		otp = (int)Math.ceil(Math.random() * 5000);
+		String mobileNumber;
+		mobileNumber = tfUpMobileNumber.getText().toString().trim();
+		if (mobileNumber.isEmpty()) {
+			JOptionPane.showMessageDialog(contentPane, "Mobile Number Required");
+			tfUpMobileNumber.requestFocus();
+			return;
+		}
+		if (mobileNumber.length() != 10) {
+			JOptionPane.showMessageDialog(contentPane, "Mobile Number Must be of 10 digits");
+			tfUpMobileNumber.requestFocus();
+			return;
+		}
+		if (otp < 1000) {
+			otp = 2000 + otp;
+		}
+		JOptionPane.showMessageDialog(btnOTP, "Your OTP is "+otp);
 	}
 
 	@SuppressWarnings("deprecation")

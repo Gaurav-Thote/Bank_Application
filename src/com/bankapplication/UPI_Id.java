@@ -34,7 +34,7 @@ public class UPI_Id extends JFrame {
 	PreparedStatement pst;
 	ResultSet rs;
 	int bals,  id2, bals2, attempt =3;
-	String upi, pin;
+	String upi, pin, upiName, mobileNumber;
 	
 	/**
 	 * Launch the application.
@@ -123,7 +123,16 @@ public class UPI_Id extends JFrame {
 		pin  = tfUpiPIn.getText().trim();
 		pins = Integer.parseInt(pin);
 		amount = Integer.parseInt(tfUpiAmount.getText().trim());
-		
+		if(upi.isEmpty()) {
+			JOptionPane.showMessageDialog(contentPane, "UPI Id or Mobile Number required");
+			tfUpiId.requestFocus();
+			return;
+		}
+		if(! ( upi.equals(checkUpiId()) || upi.equals(checkNumber()) ) ) {
+			JOptionPane.showMessageDialog(contentPane, "UPI Id or Mobile Number is not registered");
+			tfUpiId.requestFocus();
+			return;
+		}
 		if(LoginPage.j.equals("none")) {
 			JOptionPane.showMessageDialog(contentPane, "Create Your UPI Account");
 			dispose();
@@ -203,6 +212,54 @@ public class UPI_Id extends JFrame {
 			}
 		}
 	}
+	private String checkNumber() {
+		try {
+			connection();
+			String u, mobile= upi;
+			
+			while (rs.next()) {
+				
+				mobileNumber = rs.getString(9);
+				u = rs.getString(9);
+								
+				if ( mobile.equals(u) ) {	
+//					JOptionPane.showMessageDialog(contentPane, "Login Successfully");
+					
+					break;
+				}
+				
+			}
+			
+		}catch(Exception ae) {
+			ae.printStackTrace();
+		}
+//		JOptionPane.showMessageDialog(contentPane, mobileNumber);
+		return mobileNumber;
+	}
+
+	private String checkUpiId() {
+		try {
+			connection();
+			String u, userName= upi;
+			
+			while (rs.next()) {
+				
+				upiName = rs.getString(10);
+				u = rs.getString(10);
+								
+				if ( userName.equals(u) ) {	
+//					JOptionPane.showMessageDialog(contentPane, "Login Successfully");
+					
+					break;
+				}
+			}
+		}catch(Exception ae) {
+			ae.printStackTrace();
+		}	
+//		JOptionPane.showMessageDialog(contentPane, upiName);
+		return upiName;
+	}
+
 	private int bal2() {
 		try {
 			connection();

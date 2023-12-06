@@ -248,7 +248,7 @@ public class BankApplication extends JFrame {
 		contentPane.add(lblUPI);
 		
 		JLabel png = new JLabel("Internet Banklnig");
-		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.png")));
+		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.jpg")));
 		png.setBounds(0, 11, 887, 512);
 		contentPane.add(png);
 

@@ -323,6 +323,7 @@ public class SignUpPage extends JFrame {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			JOptionPane.showMessageDialog(contentPane, "Account Created Successfully");
 			LoginPage login = new LoginPage();
 			dispose();
 			login.setVisible(true);

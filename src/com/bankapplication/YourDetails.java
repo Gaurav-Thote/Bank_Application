@@ -24,7 +24,7 @@ public class YourDetails extends JFrame {
 	Connection con;
 	PreparedStatement pst;
 	ResultSet rs;
-	String fName, mName, lName, add, uName, mobileNumber;
+	String fName, mName, lName, add, uName, mobileNumber, upiName;
 	int bals;
 	/**
 	 * Launch the application.
@@ -70,23 +70,23 @@ public class YourDetails extends JFrame {
 		contentPane.add(lblDetail);
 				
 		JLabel lblAddress = new JLabel("Address:-");
-		lblAddress.setBounds(108, 180, 93, 41);
+		lblAddress.setBounds(108, 168, 93, 41);
 		lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblAddress);
 				
 		JLabel lblBal = new JLabel("Bank Balance:-\r\n");
-		lblBal.setBounds(108, 284, 150, 41);
+		lblBal.setBounds(108, 260, 150, 41);
 		lblBal.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblBal);
 			
 		JLabel lblUsername = new JLabel("Username:-");
-		lblUsername.setBounds(108, 336, 133, 41);
+		lblUsername.setBounds(108, 305, 133, 41);
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		contentPane.add(lblUsername);
 		
 		JLabel lblMobileNumber = new JLabel("Mobile Number:-");
 		lblMobileNumber.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblMobileNumber.setBounds(108, 232, 150, 41);
+		lblMobileNumber.setBounds(108, 214, 150, 41);
 		contentPane.add(lblMobileNumber);
 		
 		JButton btnExit = new JButton("");
@@ -97,44 +97,92 @@ public class YourDetails extends JFrame {
 			}
 		});
 		btnExit.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnExit.setBounds(255, 427, 87, 31);
+		btnExit.setBounds(258, 455, 87, 31);
 		contentPane.add(btnExit);
 		
 		JLabel lblShowName = new JLabel("");
 		lblShowName.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblShowName.setBounds(169, 128, 395, 41);
+		lblShowName.setBounds(174, 128, 395, 41);
 		contentPane.add(lblShowName);
-//		lblShowName.setText(fName()+" "+mName()+" "+lName());
+		lblShowName.setText(fName()+" "+mName()+" "+lName());
 		
 		JLabel lblShowAddress = new JLabel("");
 		lblShowAddress.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblShowAddress.setBounds(186, 180, 362, 41);
+		lblShowAddress.setBounds(190, 168, 362, 41);
 		contentPane.add(lblShowAddress);
-//		lblShowAddress.setText(add());
+		lblShowAddress.setText(add());
 		
 		JLabel lblShowBal = new JLabel("");
 		lblShowBal.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblShowBal.setBounds(228, 284, 336, 41);
+		lblShowBal.setBounds(233, 260, 336, 41);
 		contentPane.add(lblShowBal);
-//		lblShowBal.setText(""+bal());
+		lblShowBal.setText(""+bal());
 		
 		JLabel lblShowUsername = new JLabel("");
 		lblShowUsername.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblShowUsername.setBounds(201, 336, 362, 41);
+		lblShowUsername.setBounds(207, 305, 362, 41);
 		contentPane.add(lblShowUsername);
-//		lblShowUsername.setText(""+uName());
+		lblShowUsername.setText(uName());
 		
 		JLabel lblShowMobileNumber = new JLabel("");
 		lblShowMobileNumber.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblShowMobileNumber.setBounds(244, 232, 330, 41);
+		lblShowMobileNumber.setBounds(246, 214, 330, 41);
 		contentPane.add(lblShowMobileNumber);
-//		lblShowMobileNumber.setText(""+mobileNumber());
+		lblShowMobileNumber.setText(""+mobileNumber());
+		
+		JLabel lblUpiName = new JLabel("UPI Name:-");
+		lblUpiName.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblUpiName.setBounds(108, 352, 133, 41);
+		contentPane.add(lblUpiName);
+		
+		JLabel lblCardNumber = new JLabel("Card Number:-");
+		lblCardNumber.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCardNumber.setBounds(108, 393, 133, 41);
+		contentPane.add(lblCardNumber);
+		lblShowMobileNumber.setText(""+mobileNumber());
+		
+		JLabel lblShowUpiId = new JLabel("");
+		lblShowUpiId.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblShowUpiId.setBounds(207, 352, 362, 41);
+		contentPane.add(lblShowUpiId);
+		lblShowUpiId.setText(upiName());
+		
+		JLabel lblShowCardNumber = new JLabel("");
+		lblShowCardNumber.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblShowCardNumber.setBounds(207, 393, 362, 41);
+		contentPane.add(lblShowCardNumber);
 		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(YourDetails.class.getResource("/img/square1.png")));
 		png.setBounds(0, 0, 595, 562);
 		contentPane.add(png);
 	}
+
+	private String upiName() {
+		try {
+			connection();
+			String u= LoginPage.u, p= LoginPage.p,userName= LoginPage.u, password= LoginPage.p;
+			
+			while (rs.next()) {
+				
+				upiName = rs.getString(10);
+				u = rs.getString(6);
+				p = rs.getString(7);
+				
+				if (userName.equals(u) && password.equals(p)) {	
+//					JOptionPane.showMessageDialog(contentPane, "Login Successfully");
+					
+					break;
+				}
+			}
+		}catch(Exception ae) {
+			ae.printStackTrace();
+		}	
+		return upiName;
+				
+	}
+			
+		
 
 	private String mobileNumber() {
 		try {
