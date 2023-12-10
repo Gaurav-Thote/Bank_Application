@@ -239,7 +239,7 @@ public class SignUpPage extends JFrame {
 		amount = (int)Math.ceil(Math.random() * 5000);
 		mobileNumber = tfMobileNumber.getText().toString().trim();
 		otps = tfOTP.getText().toString().trim();
-		upi = "none";
+		upi = "na";
 		
 		//Validations
 		if (fName.isEmpty()) {
@@ -295,6 +295,19 @@ public class SignUpPage extends JFrame {
 			tfMobileNumber.requestFocus();
 			return;
 		}
+		if (mobileNumber.length() == 10) {
+				try {
+					@SuppressWarnings("unused")
+					int mob_no = Integer.parseInt(mobileNumber);
+					JOptionPane.showMessageDialog(btnSignUp, mob_no);
+				}
+				catch(Exception be) {
+					JOptionPane.showMessageDialog(contentPane, "Mobile Number cannot contain character");
+					tfMobileNumber.requestFocus();
+					return;
+				}
+		}
+		
 		otpCheck = Long.parseLong(otps);
 		if(otp == otpCheck) {
 			try {

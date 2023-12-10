@@ -133,9 +133,11 @@ public class UPI_Id extends JFrame {
 			tfUpiId.requestFocus();
 			return;
 		}
-		if(LoginPage.j.equals("none")) {
+		if(LoginPage.j.equals("na")) {
 			JOptionPane.showMessageDialog(contentPane, "Create Your UPI Account");
 			dispose();
+			GenerateUpiId gui = new GenerateUpiId();
+			gui.setVisible(true);
 		}
 		
 		if(amount > 200000) {
