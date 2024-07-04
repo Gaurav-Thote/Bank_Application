@@ -48,7 +48,7 @@ public class MainPage extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
-		
+
 		JLabel lblLogin = new JLabel("LogIn");
 		lblLogin.setVerticalAlignment(SwingConstants.TOP);
 		lblLogin.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -57,16 +57,17 @@ public class MainPage extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				dispose();
 				LoginPage lp = new LoginPage();
-				lp.setVisible(true);			}
+				lp.setVisible(true);
+			}
 		});
 		lblLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Algerian", Font.PLAIN, 22));
 		lblLogin.setBounds(762, 21, 95, 39);
 		getContentPane().add(lblLogin);
-		
+
 		JLabel png = new JLabel("");
-		png.setIcon(new ImageIcon(MainPage.class.getResource("/img/bank.png")));
+		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.jpg")));
 		png.setBounds(0, 0, 887, 512);
 		getContentPane().add(png);
 	}

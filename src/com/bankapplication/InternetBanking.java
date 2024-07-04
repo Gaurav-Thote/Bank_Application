@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class InternetBanking extends JFrame {
 
-
 	private JPanel contentPane;
 
 	/**
@@ -50,28 +49,27 @@ public class InternetBanking extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnUpiId = new JButton("Generate UPI Id");
 		btnUpiId.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				dispose();
 				GenerateUpiId gui = new GenerateUpiId();
 				gui.setVisible(true);
-				
+
 			}
 		});
 		btnUpiId.setBackground(new Color(192, 192, 192));
 		btnUpiId.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnUpiId.setBounds(89, 116, 226, 46);
 		contentPane.add(btnUpiId);
-		
+
 		JButton btnDebitCard = new JButton("Generate Debit Card");
 		btnDebitCard.setBackground(new Color(192, 192, 192));
 		btnDebitCard.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnDebitCard.setBounds(89, 213, 226, 46);
 		contentPane.add(btnDebitCard);
-		
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(Withdraw.class.getResource("/img/square1 (2).png")));
 		png.setBounds(0, 0, 399, 387);

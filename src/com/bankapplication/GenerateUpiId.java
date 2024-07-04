@@ -30,7 +30,7 @@ public class GenerateUpiId extends JFrame {
 	Connection con;
 	PreparedStatement pst;
 	ResultSet rs;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -59,17 +59,19 @@ public class GenerateUpiId extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
-		
+
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		tfUpiId = new JTextField();
 		tfUpiId.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		tfUpiId.setColumns(10);
-		tfUpiId.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "UPI ID", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		tfUpiId.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "UPI ID",
+				TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		tfUpiId.setBounds(101, 81, 195, 54);
 		contentPane.add(tfUpiId);
-		
+
 		JButton btnWithdraw = new JButton("");
 		btnWithdraw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,49 +81,49 @@ public class GenerateUpiId extends JFrame {
 		btnWithdraw.setIcon(new ImageIcon(GenerateUpiId.class.getResource("/img/confirm.png")));
 		btnWithdraw.setBounds(152, 273, 102, 31);
 		contentPane.add(btnWithdraw);
-		
+
 		tfUpiPin = new JTextField();
 		tfUpiPin.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		tfUpiPin.setColumns(10);
-		tfUpiPin.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "UPI Pin", TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		tfUpiPin.setBorder(new TitledBorder(
+				new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "UPI Pin",
+				TitledBorder.LEFT, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		tfUpiPin.setBounds(101, 174, 195, 54);
 		contentPane.add(tfUpiPin);
-		
+
 		JLabel png = new JLabel("");
 		png.setIcon(new ImageIcon(Withdraw.class.getResource("/img/square1 (2).png")));
 		png.setBounds(0, 0, 399, 387);
 		contentPane.add(png);
-		
+
 	}
 
 	protected void upiIdGenerate() {
 		String upiName, upiPin;
 		int upiPins, id = LoginPage.id;
-		
-		
+
 		upiName = tfUpiId.getText().trim();
 		upiPin = tfUpiPin.getText().trim();
-		
-		if(upiName.isEmpty()) {
+
+		if (upiName.isEmpty()) {
 			JOptionPane.showMessageDialog(contentPane, "UPI ID is required");
 			tfUpiId.requestFocus();
 			return;
 		}
-		if(upiPin.isEmpty()) {
+		if (upiPin.isEmpty()) {
 			JOptionPane.showMessageDialog(contentPane, "UPI pin required");
 			tfUpiPin.requestFocus();
 			return;
 		}
-		if(upiPin.length() == 4) {
+		if (upiPin.length() == 4) {
 			try {
 				upiPins = Integer.parseInt(upiPin);
-			}
-			catch(Exception be) {
+			} catch (Exception be) {
 				JOptionPane.showMessageDialog(contentPane, "UPI pin cannot contain character");
 				tfUpiPin.requestFocus();
 				return;
 			}
-			if(upiPins < 10000) {
+			if (upiPins < 10000) {
 				connection();
 				try {
 					pst = con.prepareStatement("update signup set upi_username=?, upi_pin=? where id = ?");
@@ -129,38 +131,37 @@ public class GenerateUpiId extends JFrame {
 					pst.setString(2, upiPin);
 					pst.setInt(3, id);
 					pst.executeUpdate();
-					
+
 					JOptionPane.showMessageDialog(contentPane, "UPI Id created Successfully");
 					dispose();
-					
-				}catch(Exception ae) {
+
+				} catch (Exception ae) {
 					JOptionPane.showMessageDialog(null, "Data Update in Database faild");
-					
+
 				}
 			}
-			
+
 		}
-		if(upiPin.length() != 4) {
+		if (upiPin.length() != 4) {
 			JOptionPane.showMessageDialog(contentPane, "UPI pin must be of 4 digits");
 			tfUpiPin.requestFocus();
 			return;
 		}
 	}
-	
+
 	protected void connection() {
-		
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account","root","");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "");
 			pst = con.prepareStatement("select * from signup");
 			rs = pst.executeQuery();
-			//JOptionPane.showMessageDialog(contentPane, "DataBase Connected");
-			
+			// JOptionPane.showMessageDialog(contentPane, "DataBase Connected");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
+
 }

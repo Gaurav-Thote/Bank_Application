@@ -32,9 +32,7 @@ public class BankApplication extends JFrame {
 	Connection con;
 	PreparedStatement pst;
 	ResultSet rs;
-	
-	
-	
+
 	private JLabel lblYourDetails;
 	private JLabel lblUpDetalis;
 	private JLabel lblDelAccount;
@@ -44,8 +42,6 @@ public class BankApplication extends JFrame {
 	JButton btnRefresh;
 	private JLabel lblLogout;
 	private JLabel lblUPI;
-	
-
 
 	/**
 	 * Launch the application.
@@ -78,21 +74,20 @@ public class BankApplication extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblUser = new JLabel("");
 		lblUser.setForeground(new Color(255, 255, 255));
 		lblUser.setFont(new Font("Algerian", Font.PLAIN, 18));
 		lblUser.setBounds(97, 26, 406, 37);
 		contentPane.add(lblUser);
-		lblUser.setText(LoginPage.fName+" "+LoginPage.lName);
-		
-	
+		lblUser.setText(LoginPage.fName + " " + LoginPage.lName);
+
 		JLabel lblWelcome = new JLabel("Welcome");
 		lblWelcome.setForeground(new Color(255, 255, 255));
 		lblWelcome.setFont(new Font("Algerian", Font.PLAIN, 18));
 		lblWelcome.setBounds(10, 26, 98, 37);
 		contentPane.add(lblWelcome);
-		
+
 		JLabel lblAvailableBalance = new JLabel("Available Balance\r\n");
 		lblAvailableBalance.setForeground(new Color(255, 255, 255));
 		lblAvailableBalance.setHorizontalAlignment(SwingConstants.CENTER);
@@ -101,12 +96,12 @@ public class BankApplication extends JFrame {
 		lblAvailableBalance.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		lblAvailableBalance.setBounds(10, 59, 871, 37);
 		contentPane.add(lblAvailableBalance);
-		
+
 		lblBal = new JLabel("");
 		lblBal.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				BankApplication ba= new BankApplication();
+				BankApplication ba = new BankApplication();
 				ba.revalidate();
 				ba.repaint();
 			}
@@ -116,8 +111,8 @@ public class BankApplication extends JFrame {
 		lblBal.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblBal.setBounds(364, 93, 159, 37);
 		contentPane.add(lblBal);
-		lblBal.setText(""+bal());
-		
+		lblBal.setText("" + bal());
+
 		lblYourDetails = new JLabel("Your Details");
 		lblYourDetails.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -129,27 +124,27 @@ public class BankApplication extends JFrame {
 		lblYourDetails.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblYourDetails.setBounds(205, 219, 103, 27);
 		contentPane.add(lblYourDetails);
-		
+
 		lblUpDetalis = new JLabel("Update Details");
 		lblUpDetalis.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblUpDetalis.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				Update_Detail uDetails =  new Update_Detail();
-				dispose();				
+				Update_Detail uDetails = new Update_Detail();
+				dispose();
 				uDetails.setVisible(true);
-				
+
 			}
 		});
 		lblUpDetalis.setForeground(new Color(255, 255, 255));
 		lblUpDetalis.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblUpDetalis.setBounds(596, 219, 128, 27);
 		contentPane.add(lblUpDetalis);
-		
+
 		lblDeposit = new JLabel("Deposit");
 		lblDeposit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				Deposit dep = new Deposit();
 				dep.setVisible(true);
 			}
@@ -158,13 +153,13 @@ public class BankApplication extends JFrame {
 		lblDeposit.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDeposit.setBounds(205, 305, 103, 27);
 		contentPane.add(lblDeposit);
-		
+
 		lblWithdraw = new JLabel("Withdraw");
 		lblWithdraw.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblWithdraw.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Withdraw wd =new Withdraw();
+				Withdraw wd = new Withdraw();
 				wd.setVisible(true);
 			}
 		});
@@ -172,10 +167,10 @@ public class BankApplication extends JFrame {
 		lblWithdraw.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblWithdraw.setBounds(621, 305, 103, 27);
 		contentPane.add(lblWithdraw);
-		
+
 		lblDelAccount = new JLabel("Remove Account");
 		lblDelAccount.addMouseListener(new MouseAdapter() {
-			
+
 			public void mouseClicked(MouseEvent e) {
 				deleteAccount();
 			}
@@ -185,7 +180,7 @@ public class BankApplication extends JFrame {
 		lblDelAccount.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblDelAccount.setBounds(357, 451, 206, 27);
 		contentPane.add(lblDelAccount);
-		
+
 		btnRefresh = new JButton("");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -201,12 +196,12 @@ public class BankApplication extends JFrame {
 		btnRefresh.setFocusPainted(false);
 		btnRefresh.setBorderPainted(false);
 		btnRefresh.setContentAreaFilled(false);
-		btnRefresh.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+		btnRefresh.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 		contentPane.add(btnRefresh);
-		
+
 		lblLogout = new JLabel("LOGOUT");
 		lblLogout.addMouseListener(new MouseAdapter() {
-			
+
 			public void mouseClicked(MouseEvent e) {
 				dispose();
 				MainPage mp = new MainPage();
@@ -219,7 +214,7 @@ public class BankApplication extends JFrame {
 		lblLogout.setFont(new Font("Algerian", Font.PLAIN, 18));
 		lblLogout.setBounds(783, 26, 86, 37);
 		contentPane.add(lblLogout);
-		
+
 		JLabel lblInternetBanking = new JLabel("Internet Banking");
 		lblInternetBanking.addMouseListener(new MouseAdapter() {
 			@Override
@@ -232,7 +227,7 @@ public class BankApplication extends JFrame {
 		lblInternetBanking.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblInternetBanking.setBounds(205, 382, 148, 27);
 		contentPane.add(lblInternetBanking);
-		
+
 		lblUPI = new JLabel("UPI");
 		lblUPI.addMouseListener(new MouseAdapter() {
 			@Override
@@ -246,7 +241,7 @@ public class BankApplication extends JFrame {
 		lblUPI.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblUPI.setBounds(518, 382, 206, 27);
 		contentPane.add(lblUPI);
-		
+
 		JLabel png = new JLabel("Internet Banklnig");
 		png.setIcon(new ImageIcon(BankApplication.class.getResource("/img/bank.jpg")));
 		png.setBounds(0, 11, 887, 512);
@@ -255,86 +250,80 @@ public class BankApplication extends JFrame {
 	}
 
 	protected void deleteAccount() {
-		String y="Are you sure you want to remove your account"; 
+		String y = "Are you sure you want to remove your account";
 		int yes = JOptionPane.showConfirmDialog(contentPane, y);
-	if (JOptionPane.YES_OPTION== yes) {
+		if (JOptionPane.YES_OPTION == yes) {
 			int id = LoginPage.id;
 			try {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
-					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account","root","");
+					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "");
 				} catch (ClassNotFoundException e1) {
-					
+
 					e1.printStackTrace();
 				}
-				
+
 				PreparedStatement pst;
-				
-				pst= con.prepareStatement("delete from signup where id=?");
+
+				pst = con.prepareStatement("delete from signup where id=?");
 				pst.setInt(1, id);
 				pst.executeUpdate();
 				dispose();
 				MainPage mp = new MainPage();
 				mp.setVisible(true);
 			} catch (SQLException e1) {
-				
+
 				e1.printStackTrace();
 			}
-		
+
 		}
-		
+
 	}
 
 	private int bal() {
 		try {
 			connection();
-			String u= LoginPage.u, p= LoginPage.p,userName= LoginPage.u, password= LoginPage.p;
-			
+			String u = LoginPage.u, p = LoginPage.p, userName = LoginPage.u, password = LoginPage.p;
+
 			while (rs.next()) {
-				
+
 				bals = rs.getInt(8);
 				u = rs.getString(6);
 				p = rs.getString(7);
-				
-				if (userName.equals(u) && password.equals(p)) {	
+
+				if (userName.equals(u) && password.equals(p)) {
 //					JOptionPane.showMessageDialog(contentPane, "Login Successfully");
-					
+
 					break;
 				}
-				
+
 			}
-			
-		}catch(Exception ae) {
+
+		} catch (Exception ae) {
 			ae.printStackTrace();
 		}
 		return bals;
 	}
-protected void connection() {
-		
+
+	protected void connection() {
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account","root","");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/account", "root", "");
 			pst = con.prepareStatement("select * from signup");
 			rs = pst.executeQuery();
-			//JOptionPane.showMessageDialog(contentPane, "DataBase Connected");
-			
+			// JOptionPane.showMessageDialog(contentPane, "DataBase Connected");
+
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
-		
-		
-	}	
-protected void refresh() {
-	dispose();
-	BankApplication ba = new BankApplication();
-	ba.setVisible(true);
+
+	}
+
+	protected void refresh() {
+		dispose();
+		BankApplication ba = new BankApplication();
+		ba.setVisible(true);
+	}
 }
-}
-
-
-
-
-
-
-
